@@ -7,24 +7,51 @@ describe('Utils test suite',()=> {
         let sut: StringUtils;
 
         beforeEach(()=>{
-            sut = new StringUtils();
-            console.log('setup');
-            
+            sut = new StringUtils();        
         })
 
         afterEach(()=>{
-            console.log('after each - teardown');
+            // console.log('after each - teardown');
             
         })
 
 
-        it.only('should return correct uppercase for valid string' ,() => {
+        it('should return correct uppercase for valid string' ,() => {
 
             const actual = sut.toUpperCase('abc');
 
             expect(actual).toBe('ABC');
-            console.log('Actual test');
             
+            
+        })
+
+        it('Should throw an error when empty string is passed - 1] function'  , ()=> {
+            function expectError() {
+                const actual = sut.toUpperCase('');
+            }
+
+            expect(expectError).toThrow('Invalid Argument');
+
+        })
+
+        it('Should throw an error when empty string is passed - 2] Arrow function'  , ()=> {
+
+            expect(()=>{
+                const actual = sut.toUpperCase('');
+            }).toThrow('Invalid Argument');
+
+        })
+
+        it.only('Should throw an error when empty string is passed - 3] try Catch block'  , (done)=> {
+            try {
+                const actual = sut.toUpperCase('');
+                done('toUpperCase should throw error Invalid Argument')
+            } catch (error) {
+                expect(error).toBeInstanceOf(Error);
+                expect(error).toHaveProperty('message','Invalid Argument');
+                done();
+            }    
+
         })
     })
 
