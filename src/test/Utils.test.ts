@@ -42,7 +42,7 @@ describe('Utils test suite',()=> {
 
         })
 
-        it.only('Should throw an error when empty string is passed - 3] try Catch block'  , (done)=> {
+        it('Should throw an error when empty string is passed - 3] try Catch block'  , (done)=> {
             try {
                 const actual = sut.toUpperCase('');
                 done('toUpperCase should throw error Invalid Argument')
