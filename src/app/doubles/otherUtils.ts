@@ -1,3 +1,4 @@
+import { v4 } from "uuid";
 export type StringInfo = {
   lowerCase: string;
   uppercase: string;
@@ -27,3 +28,30 @@ export function toUpperCasewithCb(
 }
 
 //Mocks or mockObject does two things - It tracks the arguments for a method that is called and also it tracks the times it is called.
+
+//spies
+
+// spies better work with classes
+
+export class OtherStringUtils {
+  public toUpperCase(arg: string) {
+    return arg.toUpperCase();
+  }
+  public logString(arg: string) {
+    console.log(arg);
+  }
+
+  public callExternalService() {
+    console.log("some call to an external service");
+  }
+}
+
+//mocking modules
+
+export function toUpperCase(arg: string) {
+  return arg.toUpperCase();
+}
+
+export function toLowerCaseWithKey(arg: string) {
+  return arg.toLowerCase() + v4();
+}
